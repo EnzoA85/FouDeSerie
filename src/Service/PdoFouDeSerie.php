@@ -19,7 +19,7 @@ class PdoFouDeSerie
 
     function getLesSeries()
     {
-        $req =PdoFouDeSerie::$monPdo-> prepare("SELECT id,titre as titre,duree,DATE_FORMAT(premiereDiffusion,'%d/%m/%Y') as premiereDiffusion,image FROM serie ORDER BY duree");
+        $req =PdoFouDeSerie::$monPdo-> prepare("SELECT id,titre as titre,duree,resume,DATE_FORMAT(premiereDiffusion,'%d/%m/%Y') as premiereDiffusion,image FROM serie ORDER BY duree");
         $req->execute();
         return $req->fetchAll();
     }
@@ -31,7 +31,7 @@ class PdoFouDeSerie
         return $req->fetch();
     }
 
-    function getDetail($id)
+    function getLaSerie($id)
     {
         $req = PdoFouDeSerie::$monPdo->prepare("SELECT * FROM serie where id=$id");
         $req->execute();
