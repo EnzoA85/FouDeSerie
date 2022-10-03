@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+<center><br/><h1>Vos {{nbSeries.nbSerie}} Series Préférées </h1><br/><br/>
+<div class="row">
+    {% for serie in lesSeries %}
+    <div class="col-sm-3">
+        <div class="lesSerie"><a href="{{path('app_home')}}">
+            <div class="uneSerie">
+                <img src="{{serie.image}}" style="width:250px;height:300px;"><br/><br/>
+                <h4>{{serie.titre|upper}}</h4><br/>
+                <h6>Durée : {{serie.duree}}</h6>
+                <h6>Première Diffusion : {{serie.premiereDiffusion}}</h6><br/>
+            </div>
+        </a></div><br/><br/>
+    </div>
+    {% endfor %}</center>
+</div>
+<style>
+img{
+    border-radius:20px;
+}
+h4{
+    text-decoration:underline;
+}
+h2{
+    text-decoration:underline;
+    text-decoration-color:red;
+}
+h1{
+    text-decoration:underline;
+    text-decoration-color:red;
+    font-size: 60px;
+}
+.uneSerie{
+    border:solid black 3px;
+    padding-left:20px;
+    padding-right:20px;
+    padding-top:20px;
+    border-radius:30px;
+    background-color:aliceblue;
+    color:black;
+}
+a:hover{
+    text-decoration:none;
+}
+.resume{
+    margin-left:30px;
+    margin-right:30px;
+}
+.lesSerie{
+    display:flex;
+    margin-left:70px;
+}
+</style>
+{% endblock %}
