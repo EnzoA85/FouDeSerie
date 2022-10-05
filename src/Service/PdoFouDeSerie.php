@@ -37,4 +37,10 @@ class PdoFouDeSerie
         $req->execute();
         return $req->fetch();
     }
+
+    function setLaSerie($laSerie)
+    {
+        $req = "INSERT INTO serie (titre, resume) VALUES ('" . $laSerie['titre'] . "','" . $laSerie['resume'] . "')"; 
+        $req= PdoFouDeSerie::$monPdo->exec($req);
+    }
 }
