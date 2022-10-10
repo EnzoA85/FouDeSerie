@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<center>
+<br/><h1>{{detailSerie.titre}}</h1><br/>
+<div class="resume">
+<h3>Resumé</h3>
+<p>{{detailSerie.resume}}</p>
+</div>
+<div>
+<p>Durée : {{detailSerie.duree}}<br/>Première diffusion française : {{detailSerie.premiereDiffusion}}</p>
+</div>
+<img src="{{detailSerie.image}}" style="width:500px;height:600px;border-radius:30px;">
+</center>
+
+<style>
+h1{
+    text-decoration:underline;
+    text-decoration-color:red;
+}
+h3{
+    text-decoration:underline;
+}
+.resume{
+    padding-left:200px;
+    padding-right:200px;
+}
+</style>
+{% endblock %}
