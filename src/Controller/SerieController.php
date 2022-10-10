@@ -17,10 +17,11 @@ class SerieController extends AbstractController
         return $this->render('home/serie.html.twig',['lesSeries'=>$lesSeries,'nbSeries'=>$nbSeries]);
     }
 
-    #[Route('/detailSerie?id={{lesSeries.id}}', name:'app_detailSerie')]
-    public function showDetailSerie(PdoFouDeSerie $pdoFouDeSerie)
+    #[Route('/serie/{id}', name:'app_detailSerie')]
+    public function showDetailSerie(PdoFouDeSerie $pdoFouDeSerie,$id)
     {
-        $detailSerie = $pdoFouDeSerie->getDetail($_GET['id']);
-        return $this->render('home/detailSerie.html.twig',['detailSerie'=>$detailSerie]);
+        $detailSerie = $pdoFouDeSerie->getLaSerie($id);
+        return $this->render('serie/detail.html.twig',['detailSerie'=>$detailSerie]);
     }
+
 }

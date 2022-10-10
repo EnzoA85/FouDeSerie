@@ -4,18 +4,21 @@
 <div class="row">
     {% for serie in lesSeries %}
     <div class="col-sm-3">
-        <div class="lesSerie"><a href="{{path('app_home')}}">
-            <div class="uneSerie">
+        <div class="lesSerie">
+            <a href="{{path('app_detailSerie', {id: serie.id})}}"><div class="uneSerie">
                 <img src="{{serie.image}}" style="width:250px;height:300px;"><br/><br/>
                 <h4>{{serie.titre|upper}}</h4><br/>
                 <h6>Durée : {{serie.duree}}</h6>
                 <h6>Première Diffusion : {{serie.premiereDiffusion}}</h6><br/>
-            </div>
-        </a></div><br/><br/>
+            </div></a>
+        </div><br/><br/>
     </div>
     {% endfor %}</center>
 </div>
 <style>
+.uneSerie:hover{
+    background-color:lightgray;
+}
 img{
     border-radius:20px;
 }
@@ -40,7 +43,12 @@ h1{
     background-color:aliceblue;
     color:black;
 }
+a{
+    color:black;
+    text-decoration:none;
+}
 a:hover{
+    color:black;
     text-decoration:none;
 }
 .resume{
