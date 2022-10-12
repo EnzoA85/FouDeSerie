@@ -38,4 +38,11 @@ class PdoFouDeSerie
         $req->execute();
         return $req->fetch();
     }
+
+    function deleteSerie($id)
+    {
+        $req = PdoFouDeSerie::$monPdo->prepare("DELETE from serie where id=:id");
+        $req->bindValue(':id',$id,PDO::PARAM_INT);
+        $req->execute();
+    }
 }

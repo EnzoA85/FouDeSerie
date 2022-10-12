@@ -1,6 +1,7 @@
 {% extends 'base.html.twig' %}
 {% block body %}
-<center><br/><h1>Vos {{nbSeries.nbSerie}} Series Préférées </h1><br/><br/>
+<center><br/><h1>Vos {{nbSeries.nbSerie}} Series Préférées </h1><br/>
+<button type="button" class="btn btn-primary">Ajouter</button><br/><br/>
 <div class="row">
     {% for serie in lesSeries %}
     <div class="col-sm-3">
