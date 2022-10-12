@@ -60,7 +60,7 @@ class ApiController extends AbstractController
         if($pdoFouDeSerie->getLaSerie($id)!=null)
         {
             $pdoFouDeSerie->deleteSerie($id);
-            return new JsonResponse(['message'=>'Serie as deleted'], Response::HTTP_ACCEPTED);
+            return new JsonResponse(['message'=>'Serie as deleted'], Response::HTTP_OK);
         }
         else
         {
@@ -68,14 +68,14 @@ class ApiController extends AbstractController
         }
     }
 
-    #[Route('/api/series/{id}', name:'app_editUneSerie',methods:['PUT'])]
+    #[Route('/api/series/{id}', name:'app_editUneSerie',methods:['PATCH'])]
     public function editSerie($id, PdoFouDeSerie $pdoFouDeSerie, Request $request)
     {
         if($pdoFouDeSerie->getLaSerie($id)!=null)
         {
             $laSerie = $pdoFouDeSerie->getLaSerie($id);
             $pdoFouDeSerie->updateSerieComplete($laSerie, $id, json_decode($request->getContent(),true));
-            return new JsonResponse(['message'=>'Serie as modified'], Response::HTTP_ACCEPTED);
+            return new JsonResponse(['message'=>'Serie as modified'], Response::HTTP_OK);
         }
         else
         {
