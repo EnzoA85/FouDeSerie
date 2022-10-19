@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+<center><h1>
+<p>Titre :</p>
+{{laSerie.titre}}<br/><br/>
+<p>Résumé :</p>
+{{laSerie.resume}}<br/><br/>
+
+<img src="{{laSerie.image}}"><br/><br/>
+</center></h1>
+<style>
+p{
+    text-decoration:underline;
+    text-decoration-color:red;
+}
+</style>
+{% endblock %}
