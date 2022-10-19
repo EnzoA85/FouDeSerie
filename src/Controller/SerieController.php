@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Service\PdoFouDeSerie;
+use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
