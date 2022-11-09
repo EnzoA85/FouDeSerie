@@ -20,9 +20,11 @@ class HomeController extends AbstractController
     }
 
     #[Route('/news', name: 'app_news')]
-    public function news(): Response
+    public function new(ManagerRegistry $doctrine): Response
     {
-        return $this->render('home/news.html.twig',);
+        $repository = $doctrine->getRepository(Serie::class);
+        $lesSeriesRecentes = $repository->find4Serie();
+        return $this->render('home/news.html.twig',['lesSeriesRecentes'=>$lesSeriesRecentes]);
     }
 
     #[Route('/testEntity',name:'app_testEntity')]
@@ -31,7 +33,7 @@ class HomeController extends AbstractController
         $serie = new Serie();
         $serie->setTitre('testEntity');
         $serie->setResume('Resume du testEntity');
-        $serie->setPremierDiffusion(new \DateTime("20-01-2020"));
+        $serie->setPremiereDiffusion(new \DateTime("20-01-2020"));
         $serie->setDuree(new \DateTime("00:30:25"));
         $serie->setImage("http://img.over-blog-kiwi.com/1/97/82/35/20181020/ob_eac3b5_cartebro.jpg");
         $entityManager = $doctrine->getManager();

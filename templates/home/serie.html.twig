@@ -1,16 +1,17 @@
 {% extends 'base.html.twig' %}
 {% block body %}
-<center><br/><h1>Vos {{nbSeries.nbSerie}} Series Préférées </h1><br/>
+<center><br/><h1>Vos {{lesSeries|length}} Series Préférées </h1><br/>
 <button type="button" class="btn btn-primary">Ajouter</button><br/><br/>
+<a href="{{path('app_testEntity')}}"><button type="button" class="btn btn-danger">Générer des test</button></a><br/><br/><br/>
 <div class="row">
     {% for serie in lesSeries %}
     <div class="col-sm-3">
         <div class="lesSerie">
             <a href="{{path('app_detailSerie', {id: serie.id})}}"><div class="uneSerie">
-                <img src="{{serie.image}}" style="width:250px;height:300px;"><br/><br/>
+                <img src="{{serie.image}}" style="width:250px;height:300px;border-radius:10px;"><br/><br/>
                 <h4>{{serie.titre|upper}}</h4><br/>
-                <h6>Durée : {{serie.duree}}</h6>
-                <h6>Première Diffusion : {{serie.premiereDiffusion}}</h6><br/>
+                <h6>Durée : {{serie.duree|date('H:i:s')}}</h6>
+                <h6>Première Diffusion : {{serie.premiereDiffusion|date('d-m-Y')}}</h6><br/>
             </div></a>
         </div><br/><br/>
     </div>
@@ -43,6 +44,7 @@ h1{
     border-radius:30px;
     background-color:aliceblue;
     color:black;
+    width:350px;
 }
 a{
     color:black;

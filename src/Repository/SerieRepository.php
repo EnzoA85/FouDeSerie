@@ -39,6 +39,17 @@ class SerieRepository extends ServiceEntityRepository
         }
     }
 
+    public function find4Serie()
+    {
+        $query=$this->createQueryBuilder('s')
+            ->orderBy('s.premiereDiffusion','DESC')
+            ->setMaxResults(4)
+            ->getQuery();
+        dump($query->getDQL());
+        return $query->getResult()
+        ;        
+    }
+
 //    /**
 //     * @return Serie[] Returns an array of Serie objects
 //     */

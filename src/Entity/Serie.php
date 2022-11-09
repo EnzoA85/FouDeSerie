@@ -25,7 +25,7 @@ class Serie
     private ?\DateTimeInterface $duree = null;
 
     #[ORM\Column(name:'premiereDiffusion', type: Types::DATE_MUTABLE, nullable: true)]
-    private ?\DateTimeInterface $premierDiffusion = null;
+    private ?\DateTimeInterface $premiereDiffusion = null;
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $image = null;
@@ -71,14 +71,14 @@ class Serie
         return $this;
     }
 
-    public function getPremierDiffusion(): ?\DateTimeInterface
+    public function getPremiereDiffusion(): ?\DateTimeInterface
     {
-        return $this->premierDiffusion;
+        return $this->premiereDiffusion;
     }
 
-    public function setPremierDiffusion(?\DateTimeInterface $premierDiffusion): self
+    public function setPremiereDiffusion(?\DateTimeInterface $premiereDiffusion): self
     {
-        $this->premierDiffusion = $premierDiffusion;
+        $this->premiereDiffusion = $premiereDiffusion;
 
         return $this;
     }
