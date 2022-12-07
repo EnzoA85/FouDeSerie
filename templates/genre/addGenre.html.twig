@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<center>
+<br/><h1>{{serie.titre}}</h1><br/>
+<div class="genre">
+<h3>Genre :</h3>
+{% for genre in serie.genres %}
+<p>{{genre.libelle}}</p>
+{% endfor %}
+</div>
+<div class="resume">
+<h3>Resumé</h3>
+<p>{{serie.resume}}</p>
+</div>
+<div>
+<p>Durée : {{serie.duree|date('H:i:s')}}<br/>Première diffusion française : {{serie.premiereDiffusion|date('d-m-Y')}}</p>
+</div>
+<img src="{{serie.image}}"><br/><br/>
+</center>
+<style>
+</style>
+{% endblock %}
