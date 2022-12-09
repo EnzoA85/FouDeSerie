@@ -11,7 +11,7 @@
 <p>Durée : {{detailSerie.duree|date('H:i:s')}}<br/>Première diffusion française : {{detailSerie.premiereDiffusion|date('d-m-Y')}}</p>
 </div>
 <img src="{{detailSerie.image}}"><br/><br/>
-<button type="button" class="btn btn-success">Modifier</button>
+<a href="{{path('app_admin_editSerie',{id: detailSerie.id})}}"><button type="button" class="btn btn-success">Modifier</button></a>
 <a href="{{path('app_serieDelete', {id: detailSerie.id})}}"><button type="button" class="btn btn-danger">Supprimer</button></a><br/><br/><br/>
 </center>
 <style>

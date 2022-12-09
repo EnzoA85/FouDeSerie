@@ -22,6 +22,23 @@ class AdminController extends AbstractController
         if($form->isSubmitted() && $form->isValid()){
             $entityManager->persist($serie);
             $entityManager->flush();
+            return $this->redirectToRoute('app_serie');
+        }
+        return $this->render('admin/addSerie.html.twig', [
+            'form'=>$form->createView(),
+        ]);
+    }
+
+    #[Route('/admin/series/{id}', name:'app_admin_editSerie')]
+    public function modifySerie($id,ManagerRegistry $doctrine, Request $request)
+    {
+        $serie = $doctrine->getRepository(Serie::class)->find($id);
+        $entityManager = $doctrine->getManager();
+        $form=$this->createForm(SerieType::class,$serie, ['method'=> 'PUT']);
+        $form->handleRequest($request);
+        if($form->isSubmitted() && $form->isValid()){
+            $entityManager->persist($serie);
+            $entityManager->flush();
             return $this->redirectToRoute('app_serieDelete');
         }
         return $this->render('admin/addSerie.html.twig', [

@@ -23,7 +23,7 @@ class SerieController extends AbstractController
     public function show(ManagerRegistry $doctrine)
     {
         $lesSeries = $doctrine->getRepository(Serie::class)->findBy([],['titre'=>'ASC']);
-        return $this->render('home/serie.html.twig',['lesSeries'=>$lesSeries]);
+        return $this->render('serie/serie.html.twig',['lesSeries'=>$lesSeries]);
     }
 
     /*#[Route('/serie/{id}', name:'app_detailSerie')]
@@ -43,7 +43,6 @@ class SerieController extends AbstractController
     #[Route('/serie',name:'app_serieDelete')]
     public function delete(PdoFouDeSerie $pdoFouDeSerie,$id)
     {
-        $pdoFouDeSerie->deleteSerie($id);
         $lesSeries = $pdoFouDeSerie->getLesSeries();
         $nbSeries = $pdoFouDeSerie->countSeries();
         return $this->render('home/serie.html.twig',['lesSeries'=>$lesSeries,'nbSeries'=>$nbSeries]);

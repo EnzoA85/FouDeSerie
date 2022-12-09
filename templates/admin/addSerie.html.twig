@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Ajouter une serie{% endblock %}
+{% block title %}Serie{% endblock %}
 
 {% block body %}
 {{form_start(form)}}
@@ -10,6 +10,6 @@
 {{form_row(form.premiereDiffusion)}}
 {{form_row(form.image)}}
 {{form_row(form.genres)}}
-<input type="submit" value="Ajouter" name="add" id="add">
+<input type="submit" value="Valider" name="add" id="add">
 {{form_end(form)}}
 {% endblock %}

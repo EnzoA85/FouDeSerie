@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+{% if a == 1 %}
+Ajouter un genre
+{% else %}
+Modifier un genre
+{% endif %}
+{% endblock %}
+
+{% block body %}
+<h1>Listes des genres</h1><br/>
+{% for genre in lesGenres %}
+<div class="lesGenres">
+    <a href="{{path('app_admin_editGenre', {id: genre.id})}}"><h4>{{genre.libelle}}</h4></a><br/>
+</div>
+{% endfor %}<br/>
+
+{% if a == 1 %}
+<h1>Ajouter un genre</h1><br/>
+{% else %}
+<h1>Modifier un genre</h1><br/>
+{% endif %}
+
+{{form_start(form)}}
+{{form_row(form.libelle)}}
+{% if a == 1 %}
+<input type="submit" value="Ajouter" name="add" id="add">
+{% else %}
+<input type="submit" value="Modifier" name="add" id="add">
+{% endif %}
+{{form_end(form)}}
+
+<style>
+.lesGenres{
+    display:flex;
+    margin-left:5px;
+}
+</style>
+
+{% endblock %}

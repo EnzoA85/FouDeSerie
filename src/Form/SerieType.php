@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Genre;
 use App\Entity\Serie;
+use Doctrine\ORM\EntityRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -26,7 +27,11 @@ class SerieType extends AbstractType
                 'expanded' => true,
                 'multiple' => true,
                 'choice_label'=>'libelle',//libelle est la propriété de l'entité Genre que l'on veut afficher
-                'multiple'=>true//permetlasélectionmultiple
+                'multiple'=>true,//permetlasélectionmultiple
+                'query_builder' => function (EntityRepository $er) {
+                    return $er->createQueryBuilder('u')
+                        ->orderBy('u.libelle', 'ASC');
+                },
             ));
         ;
     }
