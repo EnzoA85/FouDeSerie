@@ -17,11 +17,12 @@ Modifier un genre
 {% endfor %}<br/>
 
 {% if a == 1 %}
-<h1>Ajouter un genre</h1><br/>
+<h1 style="text-align:center">Ajouter un genre</h1><br/>
 {% else %}
-<h1>Modifier un genre</h1><br/>
+<h1 style="text-align:center">Modifier un genre</h1><br/>
 {% endif %}
 
+<br/><div class="img-thumbnail" style="margin-left:500px;margin-right:500px;">
 {{form_start(form)}}
 {{form_row(form.libelle)}}
 {% if a == 1 %}
@@ -30,6 +31,7 @@ Modifier un genre
 <input type="submit" value="Modifier" name="add" id="add">
 {% endif %}
 {{form_end(form)}}
+</div>
 
 <style>
 .lesGenres{

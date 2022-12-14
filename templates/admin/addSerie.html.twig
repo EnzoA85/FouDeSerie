@@ -3,6 +3,8 @@
 {% block title %}Serie{% endblock %}
 
 {% block body %}
+
+<br/><div class="img-thumbnail" style="margin-left:500px;margin-right:500px;">
 {{form_start(form)}}
 {{form_row(form.titre)}}
 {{form_row(form.resume)}}
@@ -12,4 +14,6 @@
 {{form_row(form.genres)}}
 <input type="submit" value="Valider" name="add" id="add">
 {{form_end(form)}}
+</div>
+
 {% endblock %}
