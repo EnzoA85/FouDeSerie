@@ -12,6 +12,27 @@ use Doctrine\Persistence\ManagerRegistry;
 
 class AdminController extends AbstractController
 {
+    #[Route('/admin/series/all', name:'app_admin_listedeleteSerie')]
+    public function listeDeleteSerie(ManagerRegistry $doctrine)
+    {
+        $lesSeries = $doctrine->getRepository(Serie::class)->findBy([],['titre'=>'ASC']);
+        return $this->render('admin/delete.html.twig',['lesSeries'=>$lesSeries]);
+    }
+
+    #[Route('/admin/series/{id}', name: 'app_admin_deleteSerie', methods : 'delete')]
+    public function deleteSerie($id,ManagerRegistry $doctrine,Request $request)
+    {
+        $valeurDuToken = $request->get('token');
+        if($this->isCsrfTokenValid('leToken', $valeurDuToken))
+        {
+            $uneSerie =$doctrine->getRepository(Serie::class)->find($id);
+            $entityManager = $doctrine->getManager();
+            $entityManager->remove($uneSerie);
+            $entityManager->flush();
+        }
+        return $this->redirectToRoute('app_admin_listedeleteSerie');
+    }
+
     #[Route('/admin/series', name: 'app_admin_addSerie')]
     public function addSerie(ManagerRegistry $doctrine, Request $request)
     {

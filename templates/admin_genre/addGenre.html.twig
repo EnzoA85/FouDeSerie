@@ -1,6 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
+
 {% if a == 1 %}
 Ajouter un genre
 {% else %}
@@ -9,6 +10,7 @@ Modifier un genre
 {% endblock %}
 
 {% block body %}
+<h6>Page normalement disponible uniquement pour un admin du site</h6>
 <h1>Listes des genres</h1><br/>
 {% for genre in lesGenres %}
 <div class="lesGenres">
