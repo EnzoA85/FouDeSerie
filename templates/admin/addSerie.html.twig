@@ -10,13 +10,11 @@
 {{form_row(form.resume)}}
 {{form_row(form.duree)}}
 {{form_row(form.premiereDiffusion)}}
-{{form_row(form.image)}}
+<div id="image">{{form_row(form.image)}}</div>
 {{form_row(form.genres)}}
 <input type="submit" value="Valider" name="add" id="add">
 {{form_end(form)}}
 </div>
-<script>
-
-</script>
+<script src="{{ asset('validform.js') }}"></script>
 
 {% endblock %}
