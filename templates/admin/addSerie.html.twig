@@ -10,7 +10,8 @@
 {{form_row(form.resume)}}
 {{form_row(form.duree)}}
 {{form_row(form.premiereDiffusion)}}
-<div id="image">{{form_row(form.image)}}</div>
+{{form_row(form.image)}}
+<span class="text-danger" id="erreur"></span>
 {{form_row(form.genres)}}
 <input type="submit" value="Valider" name="add" id="add">
 {{form_end(form)}}
