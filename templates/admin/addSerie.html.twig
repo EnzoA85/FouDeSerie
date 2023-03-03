@@ -3,6 +3,9 @@
 {% block title %}Serie{% endblock %}
 
 {% block body %}
+<head>
+<link href="https://cdn.jsdelivr.net/npm/tom-select@2.2.2/dist/css/tom-select.css" rel="stylesheet">
+</head>
 <h6>Page normalement disponible uniquement pour un admin du site</h6>
 <br/><div class="img-thumbnail" style="margin-left:500px;margin-right:500px;">
 {{form_start(form)}}
@@ -16,6 +19,8 @@
 <input type="submit" value="Valider" name="add" id="add">
 {{form_end(form)}}
 </div>
-<script src="{{ asset('validform.js') }}"></script>
+<script src="https://cdn.jsdelivr.net/npm/tom-select@2.2.2/dist/js/tom-select.complete.min.js"></script>
+<script src="{{ asset('js/validform.js') }}"></script>
+<script src="{{ asset('js/select.js') }}"></script>
 
 {% endblock %}
