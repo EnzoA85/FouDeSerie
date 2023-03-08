@@ -58,6 +58,7 @@ class SerieController extends AbstractController
         $entityManager = $doctrine->getManager();
         $entityManager->persist($repository);
         $entityManager->flush();
+        $nbLike = $repository->getLikes();
         $tabLike = ['idSerie'=>$id,'nbLike'=>$nbLike];
         return new JsonResponse($tabLike);
     }
