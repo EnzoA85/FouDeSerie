@@ -8,5 +8,5 @@ image.addEventListener("change", function (e){
     } else {
         erreur.innerHTML='Votre saisie est invalide';
         button.disabled = true
-    }
+    } 
 });
