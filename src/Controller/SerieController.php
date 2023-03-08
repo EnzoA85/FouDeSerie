@@ -6,6 +6,7 @@ use App\Entity\Serie;
 use App\Service\PdoFouDeSerie;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -46,5 +47,18 @@ class SerieController extends AbstractController
         $lesSeries = $pdoFouDeSerie->getLesSeries();
         $nbSeries = $pdoFouDeSerie->countSeries();
         return $this->render('home/serie.html.twig',['lesSeries'=>$lesSeries,'nbSeries'=>$nbSeries]);
+    }
+
+    #[Route('serie/{id}/like', name:'app_addLike')]
+    public function getLikeOneSerie(ManagerRegistry $doctrine,$id)
+    {
+        $repository = $doctrine->getRepository(Serie::class)->find($id);
+        $nbLike = $repository->getLikes();
+        $repository->setLikes($nbLike+1);
+        $entityManager = $doctrine->getManager();
+        $entityManager->persist($repository);
+        $entityManager->flush();
+        $tabLike = ['idSerie'=>$id,'nbLike'=>$nbLike];
+        return new JsonResponse($tabLike);
     }
 }
