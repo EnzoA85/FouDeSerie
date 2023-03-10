@@ -1,5 +1,8 @@
 {% extends 'base.html.twig' %}
 
+{% block stylesheets %}
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+{% endblock %}
 
 {% block javascripts %}
     <script src="{{ asset('js/like.js') }}"></script>
@@ -20,9 +23,9 @@
                 <h6>Durée : {{serie.duree|date('H:i:s')}}</h6>
                 <h6>Première Diffusion : {{serie.premiereDiffusion|date('d-m-Y')}}</h6><br/>
                 <a class="like" href="{{path('app_addLike', {id: serie.id})}}">
-                    <span class="pouce">👍</span>
+                    <span class="material-symbols-outlined">thumb_up</span>
                     <span class="nbLike">{{serie.likes}}</span> 
-                    <span class="likeText">{% if serie.likes < 2 %} Like {% else %} Likes{% endif %}</span> 
+                    <span class="likeText" style="margin-right: 10px;">{% if serie.likes < 2 %} Like {% else %} Likes{% endif %}</span> 
                 </a><br/><br/>
             </div></a>
         </div><br/><br/>
@@ -30,13 +33,22 @@
     {% endfor %}</center>
 </div>
 <style>
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 1,
+  'wght' 700,
+  'GRAD' 0,
+  'opsz' 48;
+  margin-left: 10px;
+}
 .like {
-    color:#0C4A76; 
+    color:#08385B; 
     font-weight:bold;
-    font-size:40px;
+    font-size:30px;
     border-radius:10px;
     background-color:#2F89C7;
     margin:15px;
+    border: 3px solid black
 }
 .uneSerie:hover{
     background-color:lightgray;
