@@ -15,7 +15,7 @@
 <a href="{{path('app_testEntity')}}"><button type="button" class="btn btn-danger">Générer des test</button></a><br/><br/><br/>
 <div class="row">
     {% for serie in lesSeries %}
-    <div class="col-sm-3">
+    <div class="col">
         <div class="lesSerie">
             <a href="{{path('app_detailSerie', {id: serie.id})}}"><div class="uneSerie">
                 <img src="{{serie.image}}" style="width:250px;height:300px;border-radius:10px;"><br/><br/>
