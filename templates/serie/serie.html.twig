@@ -1,4 +1,10 @@
 {% extends 'base.html.twig' %}
+
+
+{% block javascripts %}
+    <script src="{{ asset('js/like.js') }}"></script>
+{% endblock %}
+
 {% block body %}
 <center><br/><h1>Vos {{lesSeries|length}} Series Préférées </h1><br/>
 <a href="{{path('app_admin_addSerie')}}"><button type="button" class="btn btn-primary">Ajouter</button></a><br/><br/>
@@ -13,14 +19,21 @@
                 <h4>{{serie.titre|upper}}</h4><br/>
                 <h6>Durée : {{serie.duree|date('H:i:s')}}</h6>
                 <h6>Première Diffusion : {{serie.premiereDiffusion|date('d-m-Y')}}</h6><br/>
-                <script src="{{ asset('js/like.js') }}"></script>
-                <a class="like" href="{{path('app_addLike', {id: serie.id})}}" style="color:blue; font-weight:bold;font-size:50px;">👍 {{serie.likes}} {% if serie.likes < 2 %} Like {% else %} Likes{% endif %} </a><br/><br/>
+                <a class="like" href="{{path('app_addLike', {id: serie.id})}}">👍<span>{{serie.likes}}</span> {% if serie.likes < 2 %} Like {% else %} Likes{% endif %}</a><br/><br/>
             </div></a>
         </div><br/><br/>
     </div>
     {% endfor %}</center>
 </div>
 <style>
+.like {
+    color:#0C4A76; 
+    font-weight:bold;
+    font-size:40px;
+    border-radius:10px;
+    background-color:#2F89C7;
+    margin:15px;
+}
 .uneSerie:hover{
     background-color:lightgray;
 }

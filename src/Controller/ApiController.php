@@ -43,7 +43,7 @@ class ApiController extends AbstractController
         }
         else
         {
-            return new JsonResponse(['message'=>'Serie not found'], Response::HTTP_NOT_FOUND);
+            return new JsonResponse(['message'=>'Serie not found'], Response::HTTP_NOT_FOUND, ['Access-Control-Allow-Origin'=>'*']);
         }
     }
 

@@ -60,6 +60,6 @@ class SerieController extends AbstractController
         $entityManager->flush();
         $nbLike = $repository->getLikes();
         $tabLike = ['idSerie'=>$id,'nbLike'=>$nbLike];
-        return new JsonResponse($tabLike);
+        return new JsonResponse($tabLike, 200, ['Access-Control-Allow-Origin'=>'*']);
     }
 }
