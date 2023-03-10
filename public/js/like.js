@@ -1,13 +1,13 @@
 var lesLiens= document.getElementsByClassName("like");
 for(var i=0 ; i < lesLiens.length;i++){
-    console.log("hbbdcbbhd")
     lesLiens[i].addEventListener("click", majLike)
 }
 
 function majLike(event) {
     event.preventDefault();
     let xhr=new XMLHttpRequest();
-    let url=this.getAttribute("href");
+    let baliseA = event.target.parentNode;
+    let url=baliseA.getAttribute("href");
     xhr.open("GET", url);
     xhr.responseType="json";
     xhr.send();
@@ -15,11 +15,15 @@ function majLike(event) {
     xhr.onload=function() {
         if (xhr.status!=200) {
             alert("Erreur"+xhr.status+":"+xhr.statusText);
-        }else{
-            if (event.target==this.firstElementChild) {
-                event.target.nextElementSibling.textContent=xhr.response.likes
+        }else {
+            if(event.target==baliseA.firstElementChild){
+                event.target.nextElementSibling.textContent=xhr.response.nbLike 
             } else {
-                event.target.textContent=xhr.response.likes
+                if (event.target==baliseA.lastElementChild) {
+                    event.target.previousElementSibling.textContent=xhr.response.nbLike 
+                } else {
+                    event.target.textContent=xhr.response.nbLike 
+                }
             }
         }
     };

@@ -19,7 +19,11 @@
                 <h4>{{serie.titre|upper}}</h4><br/>
                 <h6>Durée : {{serie.duree|date('H:i:s')}}</h6>
                 <h6>Première Diffusion : {{serie.premiereDiffusion|date('d-m-Y')}}</h6><br/>
-                <a class="like" href="{{path('app_addLike', {id: serie.id})}}">👍<span>{{serie.likes}}</span> {% if serie.likes < 2 %} Like {% else %} Likes{% endif %}</a><br/><br/>
+                <a class="like" href="{{path('app_addLike', {id: serie.id})}}">
+                    <span class="pouce">👍</span>
+                    <span class="nbLike">{{serie.likes}}</span> 
+                    <span class="likeText">{% if serie.likes < 2 %} Like {% else %} Likes{% endif %}</span> 
+                </a><br/><br/>
             </div></a>
         </div><br/><br/>
     </div>
