@@ -1,5 +1,6 @@
 {% extends 'base.html.twig' %}
 {% block body %}
+<title>{% block title %}Fou2Serie | Supprimer Séries{% endblock %}</title>
 <h6>Page normalement disponible uniquement pour un admin du site</h6>
 <center><br/><h1>Les {{lesSeries|length}} Series Enregistrer </h1><br/>
 <a href="{{path('app_testEntity')}}"><button type="button" class="btn btn-danger">Générer des test</button></a><br/><br/><br/>
