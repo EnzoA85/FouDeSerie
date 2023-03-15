@@ -5,9 +5,11 @@ namespace App\Controller;
 use App\Entity\Serie;
 use App\Service\PdoFouDeSerie;
 use Doctrine\Persistence\ManagerRegistry;
+use Exception;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Routing\Annotation\Route;
 
 class SerieController extends AbstractController
@@ -38,6 +40,9 @@ class SerieController extends AbstractController
     public function showDetailSerie(ManagerRegistry $doctrine,$id)
     {
         $detailSerie = $doctrine->getRepository(Serie::class)->find($id);
+        if (!$detailSerie) {
+            throw $this->createNotFoundException("Serie non trouver");
+        }
         return $this->render('serie/detail.html.twig',['detailSerie'=>$detailSerie]);
     }
 
