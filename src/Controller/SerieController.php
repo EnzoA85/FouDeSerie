@@ -9,7 +9,6 @@ use Exception;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Routing\Annotation\Route;
 
 class SerieController extends AbstractController
@@ -58,16 +57,21 @@ class SerieController extends AbstractController
     public function getLikeOneSerie(ManagerRegistry $doctrine,$id)
     {
         $repository = $doctrine->getRepository(Serie::class)->find($id);
-        if (!$repository) {
-            throw $this->createNotFoundException("La serie n'existe pas");
+        try {
+            if ($repository == null) {
+                throw new Exception("message \"La serie n'existe pas\"");
+            }
+            $nbLike = $repository->getLikes();
+            $repository->setLikes($nbLike+1);
+            $entityManager = $doctrine->getManager();
+            $entityManager->persist($repository);
+            $entityManager->flush();
+            $nbLike = $repository->getLikes();
+            $tabLike = ['idSerie'=>$id,'nbLike'=>$nbLike];
+            return new JsonResponse($tabLike, 200, ['Access-Control-Allow-Origin'=>'*']);
+        } catch (Exception $e) {
+            echo("<div class='erreur' style='font-family:tahoma;'>status <strong>404</strong><br/>".$e->getMessage());
         }
-        $nbLike = $repository->getLikes();
-        $repository->setLikes($nbLike+1);
-        $entityManager = $doctrine->getManager();
-        $entityManager->persist($repository);
-        $entityManager->flush();
-        $nbLike = $repository->getLikes();
-        $tabLike = ['idSerie'=>$id,'nbLike'=>$nbLike];
-        return new JsonResponse($tabLike, 200, ['Access-Control-Allow-Origin'=>'*']);
+        return new Response();
     }
 }
