@@ -58,6 +58,9 @@ class SerieController extends AbstractController
     public function getLikeOneSerie(ManagerRegistry $doctrine,$id)
     {
         $repository = $doctrine->getRepository(Serie::class)->find($id);
+        if (!$repository) {
+            throw $this->createNotFoundException("La serie n'existe pas");
+        }
         $nbLike = $repository->getLikes();
         $repository->setLikes($nbLike+1);
         $entityManager = $doctrine->getManager();
