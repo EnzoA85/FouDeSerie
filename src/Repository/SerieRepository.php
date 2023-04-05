@@ -45,7 +45,6 @@ class SerieRepository extends ServiceEntityRepository
             ->orderBy('s.premiereDiffusion','DESC')
             ->setMaxResults(4)
             ->getQuery();
-        dump($query->getDQL());
         return $query->getResult()
         ;        
     }

@@ -24,7 +24,6 @@ class SerieType extends AbstractType
             EntityType::class,
             array(
                 'class'=>Genre::class,
-                'multiple' => true,
                 'choice_label'=>'libelle',//libelle est la propriété de l'entité Genre que l'on veut afficher
                 'multiple'=>true,//permet la sélection multiple
                 'query_builder' => function (EntityRepository $er) {
