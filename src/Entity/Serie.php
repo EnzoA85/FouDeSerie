@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\SerieRepository;
+use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
@@ -142,5 +143,15 @@ class Serie
         $this->likes = $likes;
 
         return $this;
+    }
+
+    public function isNewSerie()
+    {
+        $currentDate = new DateTime('now');
+        if ($this->getPremiereDiffusion()->diff($currentDate)->format('%y')) {
+            return false;
+        } else {
+            return true;
+        }
     }
 }
