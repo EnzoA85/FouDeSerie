@@ -41,6 +41,7 @@ class AdminController extends AbstractController
         $form=$this->createForm(SerieType::class,$serie);
         $form->handleRequest($request);
         if($form->isSubmitted() && $form->isValid()){
+            $serie->setLikes(0);
             $entityManager->persist($serie);
             $entityManager->flush();
             return $this->redirectToRoute('app_serie');

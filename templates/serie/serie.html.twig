@@ -20,7 +20,7 @@
         <div class="lesSerie">
             <a href="{{path('app_detailSerie', {id: serie.id})}}"><div class="uneSerie">
                 <img src="{{serie.image}}" style="width:250px;height:300px;border-radius:10px;"><br/><br/>
-                <h4>{{serie.titre|upper}}</h4><br/>
+                <h4>{{serie.titre}}</h4><br/>
                 <h6>Durée : {{serie.duree|date('H:i:s')}}</h6>
                 <h6>Première Diffusion : {{serie.premiereDiffusion|date('d-m-Y')}}</h6><br/>
                 <a class="like" href="{{path('app_addLike', {id: serie.id})}}">

@@ -23,7 +23,7 @@ class SerieControllerTest extends WebTestCase
             array('/news'),
             array('/admin/series/all'),
             array('/admin/genre'),
-            array('/api/series'),
+            array('/api/series'), 
         );
     }
 }
