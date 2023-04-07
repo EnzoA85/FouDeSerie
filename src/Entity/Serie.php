@@ -8,9 +8,12 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints  as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 #[ORM\Table(name:'serie')]
 #[ORM\Entity(repositoryClass: SerieRepository::class)]
+#[UniqueEntity('titre',message : 'Une série qui porte ce nom existe déjà')]
 class Serie
 {
     #[ORM\Id]
@@ -27,6 +30,7 @@ class Serie
     #[ORM\Column(type: Types::TIME_MUTABLE, nullable: true)]
     private ?\DateTimeInterface $duree = null;
 
+    #[Assert\LessThan('today')]
     #[ORM\Column(name:'premiereDiffusion', type: Types::DATE_MUTABLE, nullable: true)]
     private ?\DateTimeInterface $premiereDiffusion = null;
 
