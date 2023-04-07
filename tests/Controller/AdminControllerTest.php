@@ -18,7 +18,7 @@ class AdminControllerTest extends WebTestCase
         //récupération du crawler qui liste les séries (ds la page dans laquelle on est redirigé)
         //récupération du nombre de p avec Test Titre modif1 avant l'ajout
         $crawlerListe=$client->request('GET','/admin/series/all');
-        $nbPAvant=$crawlerListe->filter('p:contains("Test Titre modif1")')->count();
+        $nbPAvant=$crawlerListe->filter('h4:contains("TEST TITRE MODIF1")')->count();
 
         $crawler=$client->request('GET', '/admin/series');
         $form = $crawler->selectButton('add')->form();
@@ -32,7 +32,7 @@ class AdminControllerTest extends WebTestCase
         //on demande à suivre la redirection et on récupère le nouveau crawler correspondant à la nouvelle page
         $crawler= $client->followRedirect();
         // on s'attend qu'il y ait une balise p supplémentaire par rapport au départ avec le titre
-        $this->assertEquals($nbPAvant+1, $crawler->filter('h4:contains("Test Titre modif1")')->count());
+        $this->assertEquals($nbPAvant+1, $crawler->filter('h4:contains("TEST TITRE MODIF1")')->count());
         $nb2 = self::getContainer()->get(SerieRepository::class)->count([]);
         dump("nbseriesApres", $nb2);
         $this->assertEquals($nb1+1, $nb2);
